@@ -474,11 +474,13 @@
 <body>
   <!-- ヘッダー追加（目次） -->
 <header style="position: sticky; top: 0; z-index: 100; background-color: #0f0f23; padding: 10px 20px; border-bottom: 1px solid rgba(255,255,255,0.1);">
-  <nav style="display: flex; justify-content: center; gap: 24px; font-size: 16px; font-weight: bold;">
+  <nav style="display: flex; justify-content: center; gap: 24px; font-size: 16px; font-weight: bold; flex-wrap: wrap;">
     <a href="#about" style="color: #e2e8f0; text-decoration: none;">自己紹介</a>
     <a href="#skills" style="color: #e2e8f0; text-decoration: none;">得意な技術</a>
     <a href="#projects" style="color: #e2e8f0; text-decoration: none;">制作物</a>
+    <a href="#personal" style="color: #e2e8f0; text-decoration: none;">個人開発</a>
     <a href="#research" style="color: #e2e8f0; text-decoration: none;">研究テーマ</a>
+    <a href="#papers" style="color: #e2e8f0; text-decoration: none;">発表・論文</a>
     <a href="#links" style="color: #e2e8f0; text-decoration: none;">リンク</a>
   </nav>
 </header>
@@ -598,6 +600,30 @@
 
 </div>
 
+<div class="section" id="personal">
+  <h2 class="section-title">
+    <span class="section-icon">🚀</span>
+    個人開発
+  </h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <h3 class="project-title">📝 Recapisure</h3>
+      <p class="project-description">
+        個人で開発中のプロジェクトです。<br>
+        <!-- TODO: プロジェクトの詳細説明を追加 -->
+      </p>
+      <div class="project-tech">
+        <span class="tech-tag">開発中</span>
+      </div>
+      <p class="project-role">
+        <strong>概要：</strong><br>
+        ・詳細は近日公開予定
+      </p>
+      <!-- <a href="https://github.com/TT0144/recapisure" class="project-link">詳細を見る →</a> -->
+    </div>
+  </div>
+</div>
+
 <div class="section" id="research">
   <h2 class="section-title">
     <span class="section-icon">🔬</span>
@@ -605,14 +631,80 @@
   </h2>
   <p class="intro-text">
     <strong>所属ゼミ：</strong> AIゼミ<br>
-    <strong>研究テーマ(個人)：</strong> C.C.レモンゲーム（地域差あり）最強AI研究<br><br>
+    <strong>研究テーマ(個人)：</strong> オープンソースLLM「Apertus」の特徴と可能性<br><br>
     <strong>概要：</strong><br>
-    C.C.レモンゲームは、相手と向き合い、エネルギーを「溜め」「波動拳」「バリア」の3手で読み合うシンプルかつ奥深いじゃんけん風の対戦ゲームです。<br>
-    本研究では、カメラとAIを用いて1人でも遊べるインタラクティブなC.C.レモン体験を実現することを目的としています。<br><br>
+    オープンソースの大規模言語モデル（LLM）である「Apertus」について、その特徴・性能・活用可能性を探求する研究です。<br>
+    商用LLMとの比較分析や、オープンソースならではのカスタマイズ性・透明性がもたらすメリットについて考察しています。<br><br>
     <strong>テーマを決めた理由：</strong><br>
-    小学生の頃くらいに、「これやろうぜ!」って言ってバリアの構えしながらよく遊びに誘われたなとふと思い出し、このゲームをカメラ付きで一人でやれたらいいなと思いました。<br>
-    そしてAIゼミに入った今、統計的なことや、強化学習に興味を持ち、実現できたらいいなと感じましたので作ろうと思いました。
+    AIの発展が著しい現代において、オープンソースLLMは民主的なAI活用の鍵を握ると考えています。<br>
+    誰もがアクセスでき、カスタマイズ可能なLLMの可能性を追求し、AIと人との共存の形を模索したいと思い、このテーマを選びました。
   </p>
+</div>
+
+<div class="section" id="papers">
+  <h2 class="section-title">
+    <span class="section-icon">📄</span>
+    発表・論文
+  </h2>
+  <p class="intro-text" style="margin-bottom: 24px;">これまでに作成した研究発表資料や論文をご覧いただけます。</p>
+  <div class="projects-grid">
+    <!-- PDF 1: C.Cレモンゲーム最強AI -->
+    <div class="project-card">
+      <h3 class="project-title">🎮 C.Cレモンゲーム最強AI</h3>
+      <p class="project-description">
+        C.Cレモンゲーム（地域によって呼び名が異なる）における最強AIの開発に関する研究発表資料です。<br><br>
+        <strong>研究内容：</strong><br>
+        ・「溜め」「波動拳」「バリア」の3手で戦う対戦ゲームのAI化<br>
+        ・カメラを用いたリアルタイムジェスチャー認識<br>
+        ・強化学習による最適戦略の学習と実装<br>
+        ・1人でも遊べるインタラクティブな体験の実現
+      </p>
+      <div class="project-tech">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">強化学習</span>
+        <span class="tech-tag">画像認識</span>
+        <span class="tech-tag">ゲームAI</span>
+      </div>
+      <a href="PDF/C.Cレモンゲーム最強AI_戸塚達哉.pdf" target="_blank" class="project-link">📥 PDFを見る →</a>
+    </div>
+
+    <!-- PDF 2: Fithub -->
+    <div class="project-card">
+      <h3 class="project-title">💪 Fithub</h3>
+      <p class="project-description">
+        フィットネス・健康管理をサポートするWebアプリケーション「Fithub」に関する企画・開発資料です。<br><br>
+        <strong>プロジェクト概要：</strong><br>
+        ・ユーザーのトレーニング記録・管理機能<br>
+        ・運動習慣の可視化とモチベーション維持<br>
+        ・健康的なライフスタイルをサポートするプラットフォーム
+      </p>
+      <div class="project-tech">
+        <span class="tech-tag">Webアプリ</span>
+        <span class="tech-tag">フィットネス</span>
+        <span class="tech-tag">ヘルスケア</span>
+      </div>
+      <a href="PDF/Fithub_グエン酸.pdf" target="_blank" class="project-link">📥 PDFを見る →</a>
+    </div>
+
+    <!-- PDF 3: オープンソースLLM Apertus -->
+    <div class="project-card">
+      <h3 class="project-title">🤖 オープンソースLLM Apertusの特徴と可能性</h3>
+      <p class="project-description">
+        オープンソースの大規模言語モデル（LLM）「Apertus」の特徴と可能性を探求した研究資料です。<br><br>
+        <strong>研究内容：</strong><br>
+        ・オープンソースLLMの技術的特徴の分析<br>
+        ・カスタマイズ性・透明性のメリット<br>
+        ・民主的なAI活用への可能性と展望
+      </p>
+      <div class="project-tech">
+        <span class="tech-tag">LLM</span>
+        <span class="tech-tag">オープンソース</span>
+        <span class="tech-tag">自然言語処理</span>
+        <span class="tech-tag">AI研究</span>
+      </div>
+      <a href="PDF/オープンソースLLM Apertusの特徴と可能性_戸塚達哉.pdf" target="_blank" class="project-link">📥 PDFを見る →</a>
+    </div>
+  </div>
 </div>
 
 <div class="section" id="links">
