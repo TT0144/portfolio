@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>戸塚達哉のプロフィール</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
+  <style>
+    * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: radial-gradient(ellipse at top left, #0f0f23 0%, #000 50%, #0f0f23 100%);
+            color: #e2e8f0;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .background-effects {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .floating-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .orb-1 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, #8b5cf6, #06b6d4);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(45deg, #f59e0b, #ef4444);
+            top: 60%;
+            right: 10%;
+            animation-delay: -10s;
+        }
+        
+        .orb-3 {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, #10b981, #3b82f6);
+            bottom: 20%;
+            left: 50%;
+            animation-delay: -5s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(30px, -50px) rotate(90deg); }
+            50% { transform: translate(-20px, -30px) rotate(180deg); }
+            75% { transform: translate(-40px, 20px) rotate(270deg); }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+        }
+        
+        .profile-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .avatar-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+        
+        .avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: white;
+            position: relative;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
+                        0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+        
+        .avatar::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #8b5cf6, #06b6d4, #f59e0b, #ef4444);
+            z-index: -1;
+            animation: rotate 4s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .status-indicator {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            width: 20px;
+            height: 20px;
+            background: #10b981;
+            border-radius: 50%;
+            border: 3px solid #0f0f23;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .name {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+        
+        .tagline {
+            font-size: 18px;
+            color: #94a3b8;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        
+        .section {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #f1f5f9;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .section-icon {
+            font-size: 28px;
+            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .intro-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #cbd5e1;
+            text-align: left;
+        }
+        
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+        }
+        
+        .language-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .language-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .language-card:hover::before {
+            left: 100%;
+        }
+        
+        .language-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(139, 92, 246, 0.5);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
+        }
+        
+        .language-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        
+        .language-name {
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 4px;
+        }
+        
+        .language-level {
+            font-size: 12px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+        }
+        
+        .project-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-card:hover::after {
+            opacity: 1;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-12px);
+            border-color: rgba(139, 92, 246, 0.4);
+            box-shadow: 0 30px 60px rgba(139, 92, 246, 0.3);
+        }
+        
+        .project-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #f1f5f9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .project-description {
+            color: #94a3b8;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .tech-tag {
+            background: rgba(15, 23, 42, 0.8);
+            color: #06b6d4;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+        }
+        
+        .project-link {
+            color: #8b5cf6;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .project-link:hover {
+            color: #a78bfa;
+            transform: translateX(4px);
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .link-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.2), transparent);
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+        
+        .link-card:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .link-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(139, 92, 246, 0.5);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
+        }
+        
+        .link-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .link-title {
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 4px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .link-description {
+            font-size: 12px;
+            color: #94a3b8;
+            position: relative;
+            z-index: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .section {
+                padding: 24px;
+                margin-bottom: 24px;
+            }
+            
+            .name {
+                font-size: 32px;
+            }
+            
+            .avatar {
+                width: 150px;
+                height: 150px;
+                font-size: 50px;
+            }
+            
+            .languages-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .links-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+  </style>
+</head>
+<body>
+  <!-- ヘッダー追加（目次） -->
+<header style="position: sticky; top: 0; z-index: 100; background-color: #0f0f23; padding: 10px 20px; border-bottom: 1px solid rgba(255,255,255,0.1);">
+  <nav style="display: flex; justify-content: center; gap: 24px; font-size: 16px; font-weight: bold; flex-wrap: wrap;">
+    <a href="#about" style="color: #e2e8f0; text-decoration: none;">自己紹介</a>
+    <a href="#skills" style="color: #e2e8f0; text-decoration: none;">得意な技術</a>
+    <a href="#projects" style="color: #e2e8f0; text-decoration: none;">制作物</a>
+    <a href="#personal" style="color: #e2e8f0; text-decoration: none;">個人開発</a>
+    <a href="#research" style="color: #e2e8f0; text-decoration: none;">研究テーマ</a>
+    <a href="#links" style="color: #e2e8f0; text-decoration: none;">リンク</a>
+  </nav>
+</header>
+
+<!-- 各セクションにID追加 -->
+<div class="section" id="about">
+  <h2 class="section-title">
+    <span class="section-icon">🙋‍♂️</span>
+    自己紹介
+  </h2>
+  <p class="intro-text">
+    はじめまして！AIと人との共存に興味を持つAIエンジニア or バックエンドエンジニア志望の学生です。<br><br>
+    <strong>名前：</strong> 戸塚達哉<br>
+    <strong>生年月日</strong> 2004年08月26日<br>
+    <strong>所属研究会：</strong> AI研究会<br>
+    <strong>将来のエンジニア像：</strong> 革新的な発想により様々な社会問題や環境問題などを解決していくエンジニア<br><br>
+    現在はAIゼミに所属し、実験的なアイデアを形にすることを楽しんでいます。特に統計や強化学習の応用に取り組んでいます。
+  </p>
+</div>
+
+<div class="section" id="skills">
+  <h2 class="section-title">
+    <span class="section-icon">💻</span>
+    得意な言語・技術
+  </h2>
+  <!-- 横にずらっと表示 -->
+  <div class="languages-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;">
+    <div class="language-card">
+      <span class="language-icon">🐍</span>
+      <div class="language-name">Python</div>
+    </div>
+
+    <div class="language-card">
+      <span class="language-icon">🐳</span>
+      <div class="language-name">Docker</div>
+    </div>
+    <div class="language-card">
+      <span class="language-icon">☁️</span>
+      <div class="language-name">AWS</div>
+    </div>
+    <div class="language-card">
+      <span class="language-icon">🌶️</span>
+      <div class="language-name">Flask</div>
+    </div>
+    <div class="language-card">
+      <span class="language-icon">🟢</span>
+      <div class="language-name">Node.js</div>
+    </div>
+    <div class="language-card">
+      <span class="language-icon">🧱</span>
+      <div class="language-name">Laravel</div>
+    </div>
+    <div class="language-card">
+      <span class="language-icon">🐘</span>
+      <div class="language-name">PHP</div>
+    </div>
+    <div class="language-card">
+      <span class="language-icon">💾</span>
+      <div class="language-name">C言語</div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="projects">
+  <h2 class="section-title">
+    <span class="section-icon">🎯</span>
+    制作物・プロジェクト
+  </h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <h3 class="project-title">🛠️ Geocation </h3>
+      <img src="images/geocation_image.png" alt="Geocationの画面例" style="width: 100%; border-radius: 12px; margin-bottom: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);" />
+      <p class="project-description">オーバーツーリズム問題を解決するため、観光客の分散化を図るWebプラットフォーム</p>
+      <div class="project-tech">
+        <span class="tech-tag">PHP</span>
+        <span class="tech-tag">Docker</span>
+        <span class="tech-tag">MySQL</span>
+        <span class="tech-tag">HTML</span>
+        <span class="tech-tag">CSS</span>
+        <span class="tech-tag">JavaScript</span>
+      </div>
+      <p class="project-role">
+        <strong>担当：</strong><br>
+        ・バックエンド全般(PHPファイル全部、MySQL少々)<br>
+        ・Javascriptでのいいね機能・★評価機能<br>
+        ・スマホ対応
+      </p>
+      <a href="https://github.com/TT0144/geocation" class="project-link">詳細を見る →</a>
+    </div>
+
+    <div class="project-card">
+      <h3 class="project-title">🛠️ JoyJaunt - 海外旅行サポートアプリ</h3>
+      <img src="images/joyjaunt_image.png" alt="JoyJauntの画面例" style="width: 100%; border-radius: 12px; margin-bottom: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);" />
+      <p class="project-description">海外旅行初心者向けの包括的サポートWebアプリケーション</p>
+      <div class="project-tech">
+        <span class="tech-tag">Flask</span>
+        <span class="tech-tag">React</span>
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">MySQL</span>
+        <span class="tech-tag">Docker</span>
+        <span class="tech-tag">HTML</span>
+        <span class="tech-tag">CSS</span>
+        <span class="tech-tag">JavaScript</span>
+      </div>
+      <p class="project-role">
+        <strong>担当：</strong><br>
+        ・バックエンド全部<br>
+        ・フロントエンドとバックエンドの結合<br>
+        ・API制作
+      </p>
+      <a href="https://github.com/TT0144/joyjaunt" class="project-link">詳細を見る →</a>
+    </div>
+
+    <div class="project-card">
+      <h3 class="project-title">💪 Fithub</h3>
+      <img src="images/fithub_image.png" alt="Fithubの画面例" style="width: 100%; border-radius: 12px; margin-bottom: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);" />
+      <p class="project-role">
+        <strong>担当：</strong><br>
+        ・Admin権限認証・権限毎のAPI制作<br>
+        ・フロントエンドの人と協力し、結合テスト完了<br>
+        ・ペット・ショップ・グループ・ミッション機能のAPI制作
+      </p>
+      <div class="project-tech">
+        <span class="tech-tag">モバイルアプリ</span>
+        <span class="tech-tag">フィットネス</span>
+        <span class="tech-tag">ヘルスケア</span>
+      </div>
+      <a href="https://github.com/WEB-IT-2025/Fithub_Backend/tree/main" class="project-link">詳細を見る →</a>
+      <a href="PDF/Fithub_グエン酸.pdf" target="_blank" class="project-link">📥 詳細資料を見る →</a>
+    </div>
+
+    <div class="project-card">
+      <h3 class="project-title">🎮 C.Cレモンゲーム最強AI</h3>
+      <p class="project-description">
+        C.Cレモンゲーム（地域によって呼び名が異なる）における最強AIの開発<br><br>
+        <strong>研究内容：</strong><br>
+        ・「溜め」「波動拳」「バリア」の3手で戦う対戦ゲームのAI化<br>
+        ・カメラを用いたリアルタイムジェスチャー認識<br>
+        ・強化学習による最適戦略の学習と実装<br>
+        ・1人でも遊べるインタラクティブな体験の実現
+      </p>
+      <div class="project-tech">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">強化学習</span>
+        <span class="tech-tag">画像認識</span>
+        <span class="tech-tag">ゲームAI</span>
+      </div>
+      <a href="PDF/C.Cレモンゲーム最強AI_戸塚達哉.pdf" target="_blank" class="project-link">📥 研究資料を見る →</a>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="personal">
+  <h2 class="section-title">
+    <span class="section-icon">🚀</span>
+    個人開発
+  </h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <h3 class="project-title">📝 recapisure</h3>
+      <img src="images/recapisure_image.png" alt="Recapisureの画面例" style="width: 100%; border-radius: 12px; margin-bottom: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);" />
+      <p class="project-description">
+        個人で開発中のプロジェクトです。<br>
+        <!-- TODO: プロジェクトの詳細説明を追加 -->
+      </p>
+      <div class="project-tech">
+        <span class="tech-tag">開発中</span>
+      </div>
+      <p class="project-role">
+        <strong>概要：</strong><br>
+        ・多言語AI（Apertus-8B）を活用した、PDFやテキストの要約・翻訳ができる無料Webアプリケーション<br>
+        ・ユーザーフレンドリーなインターフェースで、誰でも簡単に利用可能<br>
+        ・将来的には音声入力や画像解析などの機能も追加予定
+      </p>
+      <a href="https://drive.google.com/file/d/1P9e80-9Fm0fyrnSpKVjuKXH3fAoy3_eH/view?usp=sharing" target="_blank" class="project-link">🎥 デモ動画を見る →</a>
+      <a href="PDF/recapisure.pdf" target="_blank" class="project-link">📥 プレゼン資料を見る →</a>
+      <a href="https://github.com/TT0144/recapisure_public" class="project-link">詳細を見る →</a>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="research">
+  <h2 class="section-title">
+    <span class="section-icon">🔬</span>
+    現在研究中のテーマ
+  </h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <h3 class="project-title">🤖 オープンソースLLM Apertusの研究</h3>
+      <p class="project-description">
+        <strong>所属ゼミ：</strong> AIゼミ<br>
+        <strong>研究テーマ(個人)：</strong> オープンソースLLM「Apertus」の特徴と可能性<br><br>
+        <strong>概要：</strong><br>
+        オープンソースの大規模言語モデル（LLM）である「Apertus」について、その特徴・性能・活用可能性を探求する研究です。<br>
+        商用LLMとの比較分析や、オープンソースならではのカスタマイズ性・透明性がもたらすメリットについて考察しています。<br><br>
+        <strong>テーマを決めた理由：</strong><br>
+        <a href="#personal" style="color: #8b5cf6; text-decoration: underline;">就職活動用の個人開発</a>で要約・翻訳機能の実装でAIを使いたかった<br>
+        Googleの興味のあるコンテンツの記事を見れるやつで丁度Apertusの記事があったから使おうと思ったので、このテーマを選びました。
+      </p>
+      <div class="project-tech">
+        <span class="tech-tag">LLM</span>
+        <span class="tech-tag">オープンソース</span>
+        <span class="tech-tag">自然言語処理</span>
+        <span class="tech-tag">AI研究</span>
+      </div>
+      <a href="PDF/オープンソースLLM Apertusの特徴と可能性_戸塚達哉.pdf" target="_blank" class="project-link">📥 研究資料を見る →</a>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="links">
+  <h2 class="section-title">
+    <span class="section-icon">🔗</span>
+    リンク・SNS
+  </h2>
+  <div class="links-grid">
+    <a href="https://github.com/TT0144/" class="link-card">
+      <span class="link-icon">🐙</span>
+      <div class="link-title">GitHub</div>
+      <div class="link-description">コードとプロジェクト</div>
+    </a>
+  </div>
+</div>
